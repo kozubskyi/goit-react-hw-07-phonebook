@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import './ContactForm.scss';
 import * as operations from '../../redux/contacts/contacts-operations';
+import * as selectors from '../../redux/contacts/contacts-selectors';
 
 const ContactForm = ({ items, onContactAdd }) => {
   const [name, setName] = useState('');
@@ -61,7 +62,7 @@ const ContactForm = ({ items, onContactAdd }) => {
 };
 
 const mapStateToProps = state => ({
-  items: state.contacts.items,
+  items: selectors.getItems(state),
 });
 
 const mapDispatchToProps = dispatch => ({
